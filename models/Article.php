@@ -29,11 +29,18 @@ class Article extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+
+    public $category_title;
+
     public function rules()
     {
         return [
             [['category_id', 'title', 'description'], 'required'],
             [['category_id', 'status'], 'integer'],
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
             [['description'], 'string'],
             [['created_at'], 'safe'],
             [['title'], 'string', 'max' => 255],
@@ -49,6 +56,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'category_id' => 'Category ID',
+            'category_title' => 'Category Title',
             'title' => 'Title',
             'status' => 'Status',
             'description' => 'Description',

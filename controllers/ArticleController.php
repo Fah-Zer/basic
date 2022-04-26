@@ -40,7 +40,6 @@ class ArticleController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Article::find(),
-            /*
             'pagination' => [
                 'pageSize' => 50
             ],
@@ -49,7 +48,6 @@ class ArticleController extends Controller
                     'id' => SORT_DESC,
                 ]
             ],
-            */
         ]);
 
         return $this->render('index', [
