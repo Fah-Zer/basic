@@ -1,1 +1,1 @@
-Just yii2 framework basic project with 1 migration
+Just yii2 framework basic project with 1 migration and 1 gii usage
