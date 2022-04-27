@@ -103,23 +103,7 @@ class ArticleController extends Controller
     {
         Article::updateStatus($id);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => Article::find()->select('article.id, category.title AS category_title,
-            article.title AS title, status, description, created_at')
-            ->innerJoin('category', 'category_id = category.id'),
-            'pagination' => [
-                'pageSize' => 2
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->redirect(['index']);
     }
 
     /**
