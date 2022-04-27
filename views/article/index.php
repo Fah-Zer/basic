@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\bootstrap4\LinkPager;
+use app\widgets\BasicView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,11 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            [
+            /*[
                 'attribute' => 'category_title',
                 'value' => 'category.title'
 
-            ],
+            ],*/
+            'category_title',
             'title',
             'status',
             'description:ntext',
@@ -44,6 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+
+<?= BasicView::widget(); ?>
 
 
 </div>

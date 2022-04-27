@@ -2,6 +2,10 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+if (file_exists(__DIR__ . '/db-local.php')) {
+    $db_local = require __DIR__ . '/db-local.php';
+    $db = yii\helpers\ArrayHelper::merge($db, $db_local);
+}
 
 $config = [
     'id' => 'basic-console',
