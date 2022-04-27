@@ -28,11 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            /*[
-                'attribute' => 'category_title',
-                'value' => 'category.title'
-
-            ],*/
             'category_title',
             'title',
             'status',
@@ -46,8 +41,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-<?= BasicView::widget(); ?>
-
 
 </div>

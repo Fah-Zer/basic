@@ -82,4 +82,15 @@ class Article extends \yii\db\ActiveRecord
     {
         return new \app\models\query\ArticleQuery(get_called_class());
     }
+
+    public static function updateStatus($id)
+    {
+        $article = self::findOne($id);
+        if ($article->status === self::STATUS_INACTIVE) {
+            $article->status = self::STATUS_ACTIVE;
+        } else {
+            $article->status = self::STATUS_INACTIVE;
+        }
+        $article->update();
+    }
 }

@@ -101,14 +101,24 @@ class ArticleController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        Article::updateStatus($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+        $dataProvider = new ActiveDataProvider([
+            'query' => Article::find()->select('article.id, category.title AS category_title,
+            article.title AS title, status, description, created_at')
+            ->innerJoin('category', 'category_id = category.id'),
+            'pagination' => [
+                'pageSize' => 2
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+        ]);
 
-        return $this->render('update', [
-            'model' => $model,
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
         ]);
     }
 
