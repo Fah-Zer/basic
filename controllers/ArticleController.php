@@ -41,7 +41,7 @@ class ArticleController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Article::find(),
             'pagination' => [
-                'pageSize' => 50
+                'pageSize' => 2
             ],
             'sort' => [
                 'defaultOrder' => [
