@@ -35,9 +35,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             [
                 'class' => ActionColumn::className(),
+                'template' =>  '{create} {edit}',
+                'buttons' => [
+                    'edit' => function ($url, $model, $key) {
+                        return Html::a('Изменить статус', Url::to(['article/update-status', 'id' => $model->id],['class'=>'primary']));
+                    }
+                ],
+            ],
+            [
+                'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>
